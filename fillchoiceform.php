@@ -142,7 +142,7 @@ if(!strcmp($methodname,"fill choice"))
 <select name="firstchoice"  align="center" style="height:30px;width:200px;" required>
 <?php 
 //$result = $stu->getStudentDetails($rollno);
-        ?> <option disabled selected value> ------ select an Institute ------ </option> <?php
+        ?> <option selected value> ------ select an Institute ------ value=""</option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -156,7 +156,7 @@ while($row = mysqli_fetch_assoc($result))
 <?php 
 
 $result = $insobj-> getAllInstitute(); 
-        ?> <option disabled selected value>------ select an Institute ------ </option> <?php
+        ?> <option selected value>------ select an Institute ------ value=""</option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -169,7 +169,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
-    ?> <option disabled selected value>------ select an Institute ------ </option> <?php
+    ?> <option selected value>------ select an Institute ------  value="" </option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -182,7 +182,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
- ?> <option disabled selected value>------ select an Institute ------ </option> <?php   
+ ?> <option selected value>------ select an Institute ------  value="" </option> <?php   
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -195,7 +195,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
- ?> <option disabled selected value>------ select an Institute ------ </option> <?php   
+ ?> <option selected value>------ select an Institute ------ value="" </option> <?php   
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -244,7 +244,7 @@ if(!strcmp($methodname,"edit choice"))
     
         if(strcmp("",$row['firstchoice']) == 0)
         {
-    ?> <option disabled selected value>------ select an Institute ------  </option> <?php
+    ?> <option selected value>------ select an Institute ------  value=""</option> <?php
         }
         else
         {
@@ -264,7 +264,7 @@ if(!strcmp($methodname,"edit choice"))
 <?php 
        if(strcmp("",$row['secondchoice']) == 0)
         {
-    ?> <option disabled selected value>------ select an Institute ------ </option> <?php
+    ?> <option selected value>------ select an Institute ------ value=""</option> <?php
         }
         else
         {
@@ -285,7 +285,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php 
        if(strcmp("",$row['thirdchoice']) == 0)
         {
-    ?> <option disabled selected value>------ select an Institute ------ </option> <?php
+    ?> <option selected value>------ select an Institute ------ value=""</option> <?php
         }
         else
         {
@@ -306,7 +306,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php  
       if(strcmp("",$row['fourthchoice']) == 0)
         {
-    ?> <option disabled selected value> ------ select an Institute ------  </option> <?php
+    ?> <option selected value> ------ select an Institute ------  value=""</option> <?php
         }
         else
         {
@@ -327,7 +327,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php 
       if(strcmp("",$row['fifthchoice']) == 0)
         {
-    ?> <option disabled selected value>------ select an Institute ------  </option> <?php
+    ?> <option selected value>------ select an Institute ------  value="" </option> <?php
         }
         else
         {

@@ -34,6 +34,7 @@ $redirect = $_SESSION['choiceredirect'];
 if(!strcmp($method,$submit))
    {
        //getting all student details 
+       $nullchoice="";
        $result = $ins->getAllInstitute();
            while( $row = mysqli_fetch_assoc($result))
             {
@@ -41,7 +42,7 @@ if(!strcmp($method,$submit))
                   $insname = $row['name'];
                   $j=0;
                   $null = 0;
-                               while($j<5)
+                               while($j<4)
                                {
       //                            echo "comaprision b/w : ".$insname."    ".$choicearray[$j]."<br>";
 
@@ -51,7 +52,7 @@ if(!strcmp($method,$submit))
                                 
                                             $count++;
                                     }
-                        else if ((!strcmp($choicearray[$j],"")) && (strcmp($choicearray[$j+1],"")))
+          else if ((!strcmp($choicearray[$j],$nullchoice)) && (strcmp($choicearray[$j+1],$nullchoice)))
                                     {
                                      $null = 1 ;
                                      break;
@@ -89,7 +90,7 @@ if(!strcmp($method,$submit))
        {
 // fill choice in choice filling table 
         $obj->fillchoice($rollno,$firstchoice,$secondchoice,$thirdchoice,$fourthchoice,$fifthchoice);
-        $obj->printChoiceFilling($rollno);
+       // $obj->printChoiceFilling($rollno);
 //update choices        
 $stu->updatechoicestatus($rollno,$method);
         echo "<script>alert(\"Successfully Submitted\");
@@ -101,6 +102,7 @@ $stu->updatechoicestatus($rollno,$method);
   {
 
       $method='submit';
+      $nullchoice="";
 //accessing institute details 
      $result = $ins->getAllInstitute();
            while( $row = mysqli_fetch_assoc($result))
@@ -109,7 +111,7 @@ $stu->updatechoicestatus($rollno,$method);
                   $insname = $row['name'];
                   $j=0;
                    $null = 0;
-                               while($j<5)
+                               while($j<4)
                                {
         //                          echo "comaprision b/w : ".$insname."    ".$choicearray[$j]."<br>";
  //string comparision to check how many time institute comes in entered list
@@ -118,8 +120,8 @@ $stu->updatechoicestatus($rollno,$method);
                                 
                                             $count++;
                                     }
-                         else if ((!strcmp($choicearray[$j],"")) && (strcmp($choicearray[$j+1],"")))
-                                    {
+ else if ((!strcmp($choicearray[$j],$nullchoice)) && (strcmp($choicearray[$j+1],$nullchoice)))   
+                                  {
 // check that if current entered index data is null and next enytered data is also null
                                      $null = 1 ;
                                      break;
@@ -157,8 +159,8 @@ $stu->updatechoicestatus($rollno,$method);
     $stu->updatechoicestatus($rollno,$method);
       
       echo "<script>alert(\"Successfully Updated\");
-					window.location=\"$redirect\";
-					</script>";
+				window.location=\"$redirect\";
+				</script>";
   }
 
   }
@@ -172,7 +174,7 @@ else if(!strcmp($method,$lock))
                   $insname = $row['name'];
                   $j=0;
                   $null = 0;
-                               while($j<5)
+                               while($j<4)
                                {
             //                      echo "comaprision b/w : ".$insname."    ".$choicearray[$j]."<br>";
                                     if(strcmp($choicearray[$j],$insname) == 0)
@@ -216,7 +218,7 @@ else if(!strcmp($method,$lock))
       
     //echo"edit function";
     $obj->update($rollno,$firstchoice,$secondchoice,$thirdchoice,$fourthchoice,$fifthchoice);
-    $obj->printChoiceFilling($rollno);
+   // $obj->printChoiceFilling($rollno);
     $stu->updatechoicestatus($rollno,$method);
       
       echo "<script>alert(\"Successfully Locked\");

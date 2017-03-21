@@ -34,9 +34,48 @@
          
          while($row = mysqli_fetch_assoc($result))
           {
-              ?><center><table style="color:black;text-transform: uppercase;width:600px;margin-left:200px;"><tr><td><?php echo "Firstchoice  "; ?></td><td><?php 
-              echo $row['firstchoice']; ?></td></tr><tr><td><?php echo "Secondchoice  " ?> </td><td> <?php echo $row['secondchoice'];
-    ?> </td></tr><tr><td> <?php echo "Thirdchoice  " ; ?></td><td><?php echo $row['thirdchoice']; ?> </td></tr><tr><td><?php echo "Fourthchoice  "; ?> </td><td> <?php echo $row['fourthchoice']; ?> </td></tr><tr><td><?php echo "Fifthchoice  "; ?></td><td> <?php echo $row['fifthchoice']; ?></td></tr></table></center>
+              ?><center><table style="color:black;text-transform: uppercase;width:600px;margin-left:200px;">
+<tr><td><?php echo "Firstchoice  "; ?></td>
+<td><?php echo $row['firstchoice']; ?></td></tr>
+
+<tr><td><?php echo "Secondchoice  " ?> </td>
+<td> 
+<?php 
+if(!$row['secondchoice'])
+echo "Not Filled";
+else
+echo $row['secondchoice'];
+?> </td></tr>
+
+<tr><td> <?php echo "Thirdchoice  " ; ?></td>
+<td>
+<?php
+if(!$row['thirdchoice'])
+echo "Not Filled";
+else 
+echo $row['thirdchoice']; 
+?> </td></tr>
+
+<tr><td><?php echo "Fourthchoice  "; ?> </td>
+<td> 
+<?php 
+if(!$row['fourthchoice'])
+echo "Not Filled";
+else 
+echo $row['fourthchoice']; 
+?> 
+</td></tr>
+
+<tr><td><?php echo "Fifthchoice  "; ?></td>
+<td>
+<?php
+if(!$row['fifthchoice'])
+echo "Not Filled";
+else  
+echo $row['fifthchoice']; 
+?>
+</td></tr>
+</table></center>
     
     <?php
           }

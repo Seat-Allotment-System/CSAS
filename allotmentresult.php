@@ -174,8 +174,19 @@ if(strtotime($date) <= strtotime($lastdate))
         <tr><td>Roll no</td><td><?php echo $row['rollno']; ?></td></tr>
         <tr><td>Rank</td><td><?php echo $row['rank']; ?></td></tr>
         <tr><td>Email</td><td><?php echo $row['email']; ?></td></tr>
-        <tr><td>Allotment Status</td><td><?php echo $row['allotment_status']; ?></td></tr>
-        <tr><td>Allotment Institute</td><td><?php echo $allotresult['institute_name']; ?></td></tr>
+        <tr><td>Allotment Status check</td><td><?php 
+        if(!$row['allotment_status'])
+        echo "Not Alloted";
+        else
+        echo $row['allotment_status']; 
+         ?></td></tr>
+        <tr><td>Allotment Institute</td><td>
+        <?php
+        if(!$allotresult['institute_name'])
+        echo "Not Alloted";
+        else
+        echo $allotresult['institute_name']; 
+         ?></td></tr>
         </table>
         <?php
    }

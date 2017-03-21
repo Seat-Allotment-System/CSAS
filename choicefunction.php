@@ -51,7 +51,7 @@ if(!strcmp($method,$submit))
       //                            echo "comaprision b/w : ".$insname."    ".$choicearray[$j]."<br>";
 
 //string comparision b/w inserted institute or institutes in institute class               
-                      if(strcmp($choicearray[$j],$insname) == 0)
+if(strcmp($choicearray[$j],$insname) == 0)
                                     {
                                 
                                             $count++;
@@ -182,7 +182,7 @@ else if(!strcmp($method,$lock))
       
     //echo"edit function";
     $obj->update($rollno,$firstchoice,$secondchoice,$thirdchoice,$fourthchoice,$fifthchoice);
-    $obj->printChoiceFilling($rollno);
+   // $obj->printChoiceFilling($rollno);
     $stu->updatechoicestatus($rollno,$method);
       
       echo "<script>alert(\"Successfully Locked\");

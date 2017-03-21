@@ -44,8 +44,10 @@ class student
       $result = mysqli_query($this->connect,$sql);
       
       if($result)
-          echo "choice status change ";
-      else
+               {
+                  //  echo "choice status change ";
+               }  
+     else
           echo "not change ";
           
   }
@@ -169,13 +171,13 @@ public function updateAdmissionStatus($roll,$method)
 public function getAdmissionStudentDetails($rollno)
     {
 
-      
+      $alloted="";
        $sql = "select * from student where rollno ='$rollno'";
       $result = mysqli_query($this->connect,$sql);
    
        while($rowdata= mysqli_fetch_assoc($result))
         {
-          $alloted= $rowdata['allotment_status'];
+          echo $alloted= $rowdata['allotment_status'];
         }
       if(!strcmp($alloted,""))
       {
