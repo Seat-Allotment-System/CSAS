@@ -12,15 +12,21 @@
 
 </head>
 
-<body>
+<body bgcolor="white">
 
 <div id="templatemo_wrapper">
     
     <div id="templatemo_header">
 
-    
-    
-    
+    <div id="site_title">
+    <h1><a href="#" target="_parent">
+    <strong>CSAS</strong>
+    <span>Central Seat Allotment</span>
+    </a></h1>
+    </div>
+      <div class="twitter">
+      <a href="http://www.nitc.ac.in/">Organizing Institute <br/><span>NIT CALICUT</span></a>
+      </div>
  <!-- end of templatemo_header -->
 <div id="templatemo_menu">
 
@@ -67,7 +73,7 @@ a:link
     padding:20px;
     margin-left:auto;
     margin-right:auto;
-    background-color:white;
+    background-color:#F2EAC7;
     width:850px;
     height:600px;
     color:black;
@@ -107,7 +113,7 @@ margin-top:10px;
   <div>
   </div>
     <h1 align="center">Get Student Information Here.!</h1>
-    ENTER STUDENT ROLL NO
+  
 <br>    <br>
     <div id="form">
 
@@ -116,8 +122,8 @@ margin-top:10px;
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" style="font-size:30px;padding:auto;"> 
 
             <input type="text" name="rollno"
-            placeholder="Enter Student Roll no" style="margin-left:0px;">&nbsp;&nbsp;&nbsp;
-            <input type="submit" name="sub" value="Get_Student" style="margin-left:50px;font-size:15px"> 
+            placeholder="Enter Student Roll no" style="margin-left:0px;font-size:20px;">&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="sub" value="Student Detail" style="margin-left:50px;font-size:20px"> 
            
         </form> 
 
@@ -165,28 +171,31 @@ margin-top:10px;
             if($rowdata['rollno'])
             {
 //if rollno exists then shows all student details 
-    ?>   <br>
-            <table align="center" width="350px" height="200px" >
-                <tr style="font-size:18px">
-                <td> Roll No</td><td><?php echo $rowdata['rollno'];?></td>
+    ?>   <br> <br>
+     <fieldset style="width:400px;margin-left:40px;">
+            <table style="text-align:left;margin-left:100px;" width="450px" height="200px"  >
+                <tr style="font-size:20px">
+                <td> Roll No</td><td><?php echo $rowdata['name'];?></td>
                 </tr>
-                <tr style="font-size:18px">
-                <td>Name</td><td><?php echo $rowdata['name'];?> </td>
+                <tr style="font-size:20px">
+                <td>Name</td><td><?php echo $rowdata['rollno'];?> </td>
                 </tr>
-                <tr style="font-size: 18px">
+                <tr style="font-size: 20px">
                 <td>Rank </td><td><?php echo $rowdata['rank'];?> </td>
                 </tr>
-                <tr style="font-size: 18px">
+                <tr style="font-size: 20px">
                 <td>Institute Name </td><td><?php echo $seatdataresult['institute_name'];?> </td>
                 </tr>
             </table>
-            </br></br>
+</fieldset>
+            </br>
 </br>
         <form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> style="text-align:center;">
 
-         <button type ="submit" name="submit" value="upgrade" style="margin-left:0px;font-size:15px">Upgrade</button>
+
+         <button type ="submit" name="submit" value="upgrade" style="margin-left:0px;font-size:20px; width:200px;" >Upgrade</button><br><br>
        
-                     <button type ="submit" name="submit" value="confirm" style="margin-left:90px;font-size:15px">Confirm</button>
+                     <button type ="submit" name="submit" value="confirm" style="margin-left:0px;font-size:20px; width:200px;">Confirm</button>
 
 
 
@@ -198,7 +207,7 @@ margin-top:10px;
 <!-- generate addmission status pdf -->  
 
 <a href="https://csasallotment.000webhostapp.com/update/csas/admissiondetailpdf.php" target="_blank">
-      <button type="submit" name="submit" value="Admission Pdf" style="font-size:15px">Result Pdf</button>
+      <button type="submit" name="submit" value="Admission Pdf" style="font-size:20px;width:200px;">Result Pdf</button>
         </a></center>
 
 
