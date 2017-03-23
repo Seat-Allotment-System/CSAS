@@ -18,7 +18,8 @@ $email = $_SESSION['email'];
 $now = new DateTime();
 $date = $now->format('Y-m-d');
 
-$lastdate ="2017-03-21";
+$lastdate ="2017-03-23";
+$allotmentresult = "2017-03-22";
 
 /* Object Decleration */
 $stu = new student();
@@ -182,8 +183,12 @@ if(strtotime($date) <= strtotime($lastdate))
    <!--   <br><br> <button style="width:300px;height:30px;text-decoration:none;"><a href="http://localhost/CSAS/allotmentresult.php">Allotment Result</a></button> -->
        
  </form>
-        
+<?php
+          if(strtotime($date) > strtotime($allotmentresult))
+   {
+?>
  <br><br> <a href="./allotmentresult.php" target="_blank"><button style="width:300px;height:30px;text-decoration:none;">Allotment Result</button></a>
+  <?php  } ?>
          <br><br> <a href="logout.php"><button style="width:200px;height:30px;text-decoration:none;">logout</button></a>
         
 <?php
@@ -197,11 +202,17 @@ else
 
 //button for see allotment result , filled choice pdf , logout
      ?>
-<br><a href="https://csasallotment.000webhostapp.com/update/csas/choicepdf.php" target="_blank">
-      <button type="submit" name="submit" value="Result Pdf" style="width:200px;height:30px;text-decoration:none;">Filled Choice Pdf</button>
+<br><a href="./choicepdf.php" target="_blank">
+      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Filled Choice Pdf</button>
         </a>
-        <br><br> <a href="./allotmentresult.php" target="_blank"><button style="width:200px;height:30px;text-decoration:none;">Allotment Result</button></a>
-       <br><br> <a href="logout.php"><button style="width:200px;height:30px;text-decoration:none;"">logout</button></a>
+       
+<?php
+          if(strtotime($date) > strtotime($allotmentresult))
+   {
+?>
+ <br><br>  <a href="./allotmentresult.php" target="_blank"><button style="width:300px;height:30px;text-decoration:none;">Allotment Result</button></a>
+  <?php  } ?>
+       <br><br> <a href="logout.php"><button style="width:300px;height:30px;text-decoration:none;"">logout</button></a>
         <?php 
 }
    }
@@ -215,11 +226,17 @@ else
 //button for see allotment result , filled choice pdf , logout
 
             ?>
-<br><br><a href="https://csasallotment.000webhostapp.com/update/csas/choicepdf.php">
-      <button type="submit" name="submit" value="Result Pdf">Filled Choice Pdf</button>
-        </a>
-        <br><br> <a href="./allotmentresult.php" target="_blank"><button style="width:300px;height:30px;text-decoration:none;">Allotment Result</button></a>
-        <br><br> <a href="logout.php"><button style="width:100px;height:30px;">logout</button></a>
+<br><br><a href="https://csasallotment.000webhostapp.com/update/csas/choicepdf.php" target="_blank">
+      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Filled Choice Pdf</button>
+        </a> 
+<?php
+          if(strtotime($date) > strtotime($allotmentresult))
+   {
+?>
+ <br><br> <a href="./allotmentresult.php" target="_blank"><button style="width:300px;height:30px;text-decoration:none;">Allotment Result</button></a>
+  <?php  } ?>
+
+        <br><br> <a href="logout.php"><button style="width:300px;height:30px;">logout</button></a>
         <?php 
         }
     }
@@ -268,8 +285,21 @@ else
    <div id="templatemo_footer" align="center">
 
 
-	<img src="images/3.gif" style="width:80%;height:80%"/>
-<br>
+	<table>
+						<tr>
+							<td><img src = "images/au.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/sa.svg" height = "50px" width = "70px"></td>
+							<td><img src = "images/west.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/lk.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/6.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/rusia.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/afg.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/bhu.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ger.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ban.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/mal.png" height = "50px" width = "70px"></td>
+						</tr>
+					</table>
 	
 </div> <!-- end of templatemo_footer -->
 <div align="center">Copyright by<strong> NIT CALICUT</strong>  @2017</div>
