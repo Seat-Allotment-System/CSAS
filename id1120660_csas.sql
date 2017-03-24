@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 23, 2017 at 07:48 AM
+-- Generation Time: Mar 24, 2017 at 12:42 PM
 -- Server version: 10.1.20-MariaDB
 -- PHP Version: 7.0.8
 
@@ -47,8 +47,40 @@ INSERT INTO `admin` (`name`, `password`) VALUES
 CREATE TABLE `allotment` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `round_number` int(1) NOT NULL
+  `round_number` int(1) NOT NULL,
+  `rollno` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `allotment`
+--
+
+INSERT INTO `allotment` (`start_date`, `end_date`, `round_number`, `rollno`) VALUES
+('2017-03-23', '2017-03-24', 2, 100),
+('2017-03-24', '2017-03-24', 1, 101),
+('2017-03-24', '2017-03-24', 1, 103),
+('2017-03-24', '2017-03-24', 1, 104);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `allotment_date`
+--
+
+CREATE TABLE `allotment_date` (
+  `start_date` date NOT NULL DEFAULT '0000-00-00',
+  `allotment_held` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `round_number` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `allotment_date`
+--
+
+INSERT INTO `allotment_date` (`start_date`, `allotment_held`, `round_number`) VALUES
+('2017-03-24', NULL, 1),
+('2017-03-25', NULL, 2),
+('2017-03-26', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -76,16 +108,6 @@ CREATE TABLE `choicefilling` (
   `fifthchoice` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `choicefilling`
---
-
-INSERT INTO `choicefilling` (`rollno`, `firstchoice`, `secondchoice`, `thirdchoice`, `fourthchoice`, `fifthchoice`) VALUES
-('100', 'Durgapur', NULL, NULL, NULL, NULL),
-('101', 'Tiruchirappali\r\n', NULL, NULL, NULL, NULL),
-('103', 'Durgapur', NULL, NULL, NULL, NULL),
-('104', 'Raipur', 'Bhopal', 'Calicut', 'Tiruchirappali', 'Agartala');
-
 -- --------------------------------------------------------
 
 --
@@ -103,17 +125,17 @@ CREATE TABLE `institute` (
 --
 
 INSERT INTO `institute` (`name`, `total_seat`, `vacant_seat`) VALUES
-('Agartala', 1, 1),
-('Allahabad', 2, 1),
+('Agartala', 1, 0),
+('Allahabad', 2, 0),
 ('Bhopal', 1, 0),
 ('Calicut', 1, 0),
 ('Durgapur', 2, 0),
-('Jamshedpur', 2, 2),
-('Kurukshetra', 1, 1),
+('Jamshedpur', 2, 0),
+('Kurukshetra', 1, 0),
 ('Raipur', 1, 0),
-('Surathkal', 2, 2),
-('Tiruchirappali', 1, 1),
-('Warangal', 2, 2);
+('Surathkal', 2, 0),
+('Tiruchirappali', 1, 0),
+('Warangal', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -149,8 +171,8 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`name`, `rollno`, `rank`, `address`, `choice_status`, `admission_status`, `allotment_status`, `email`) VALUES
 ('Mushahid Khan', 100, 1, 'Uttar Pradesh', NULL, NULL, NULL, 'alikhanchd786@gmail.com'),
-('Fahad', 101, 2, 'Bihar', 'lock', NULL, NULL, 'xyan4321@gmail.com'),
-('SHIVAM AGARWAL', 102, 135, 'UP', NULL, NULL, NULL, 'shivam00123@gmail.com'),
+('Fahad', 101, 2, 'Bihar', NULL, NULL, NULL, 'xyan4321@gmail.com'),
+('Shivam Agarwal', 102, 135, 'UP', NULL, NULL, NULL, 'shivam00123@gmail.com'),
 ('Ajay', 103, 3, 'haryana', NULL, NULL, NULL, 'mynitdata@gmail.com'),
 ('L.M.T', 104, 4, 'Allahabad', NULL, NULL, NULL, 'lmtnitc@gmail.com'),
 ('Sunny', 105, 5, 'Punjab', NULL, NULL, NULL, 'kingmadeforu@gmail.com'),
@@ -162,7 +184,7 @@ INSERT INTO `student` (`name`, `rollno`, `rank`, `address`, `choice_status`, `ad
 ('Arsh', 111, 11, 'Allahabad', NULL, NULL, NULL, ''),
 ('Avnish', 112, 12, 'Allahabad', NULL, NULL, NULL, ''),
 ('Yogendra', 113, 13, 'Allahabad', NULL, NULL, NULL, ''),
-('Amit Soni', 114, 14, 'Chattishgarh', NULL, NULL, NULL, 'amitamora@gmail.com'),
+('Amit Soni', 114, 14, 'Chattishgarh', NULL, NULL, NULL, ''),
 ('Pankaj', 115, 15, 'Bihar', NULL, NULL, NULL, 'kumarpankajraj01@gmail.com'),
 ('Amit ', 116, 16, 'Bihar', NULL, NULL, NULL, ''),
 ('Manisha', 117, 17, 'Vanaras', NULL, NULL, NULL, ''),
@@ -300,15 +322,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `oauth_provider`, `oauth_uid`, `first_name`, `last_name`, `email`, `gender`, `locale`, `picture`, `link`, `created`, `modified`) VALUES
-(2, 'google', '106877509101373778199', 'AJAY', 'YADAV', 'ajayadav1895@gmail.com', '', 'en-GB', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', '', '2017-03-09 18:56:17', '2017-03-21 04:27:40'),
-(3, 'google', '115903042140221031367', 'mushahid', 'khan', 'alikhanchd786@gmail.com', 'male', 'en', 'https://lh3.googleusercontent.com/-Q5JXLz2OimQ/AAAAAAAAAAI/AAAAAAAAAB8/992EG5HOKVE/photo.jpg', 'https://plus.google.com/115903042140221031367', '2017-03-10 06:35:49', '2017-03-23 01:13:40'),
-(5, 'google', '105730922841771256462', 'Xyan', 'Rock', 'xyan4321@gmail.com', '', 'en', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'https://plus.google.com/105730922841771256462', '2017-03-19 16:45:10', '2017-03-22 23:12:54'),
-(6, 'google', '100499380507965937511', 'Lavkush', 'Tiwari', 'lmtnitc@gmail.com', 'male', 'en', 'https://lh5.googleusercontent.com/-X6PUUL3r3iQ/AAAAAAAAAAI/AAAAAAAAACs/-8at2aOOKFg/photo.jpg', 'https://plus.google.com/100499380507965937511', '2017-03-19 17:03:32', '2017-03-22 18:48:31'),
+(2, 'google', '106877509101373778199', 'AJAY', 'YADAV', 'ajayadav1895@gmail.com', '', 'en-GB', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', '', '2017-03-09 18:56:17', '2017-03-23 18:04:19'),
+(3, 'google', '115903042140221031367', 'mushahid', 'khan', 'alikhanchd786@gmail.com', 'male', 'en', 'https://lh3.googleusercontent.com/-Q5JXLz2OimQ/AAAAAAAAAAI/AAAAAAAAAB8/992EG5HOKVE/photo.jpg', 'https://plus.google.com/115903042140221031367', '2017-03-10 06:35:49', '2017-03-24 09:20:57'),
+(5, 'google', '105730922841771256462', 'Xyan', 'Rock', 'xyan4321@gmail.com', '', 'en', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'https://plus.google.com/105730922841771256462', '2017-03-19 16:45:10', '2017-03-23 23:32:08'),
+(6, 'google', '100499380507965937511', 'Lavkush', 'Tiwari', 'lmtnitc@gmail.com', 'male', 'en', 'https://lh5.googleusercontent.com/-X6PUUL3r3iQ/AAAAAAAAAAI/AAAAAAAAACs/-8at2aOOKFg/photo.jpg', 'https://plus.google.com/100499380507965937511', '2017-03-19 17:03:32', '2017-03-24 10:53:55'),
 (7, 'google', '101106605776880403915', 'FAHAD', '', 'kingmadeforu@gmail.com', '', 'en', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'https://plus.google.com/101106605776880403915', '2017-03-19 17:08:30', '2017-03-19 20:51:51'),
 (8, 'google', '103845691284819729982', 'Pratyush', 'Agarwal', 'pratyushagarwal3@gmail.com', '', 'en', 'https://lh4.googleusercontent.com/-5iUZD3c7UdY/AAAAAAAAAAI/AAAAAAAAArs/Aqodl9avrJk/photo.jpg', 'https://plus.google.com/103845691284819729982', '2017-03-19 17:14:35', '2017-03-19 17:14:37'),
 (9, 'google', '112271961573727566292', 'Saurabh', 'Chhabra', 'saurabhchhabra994@gmail.com', 'male', 'en', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', 'https://plus.google.com/112271961573727566292', '2017-03-19 17:15:11', '2017-03-19 17:20:06'),
-(10, 'google', '104259148824240844594', 'Amit', 'kumar', 'amitamora@gmail.com', 'male', 'en', 'https://lh5.googleusercontent.com/-vm_66c6hPcw/AAAAAAAAAAI/AAAAAAAAAq0/lt4f-O8Uhf4/photo.jpg', 'https://plus.google.com/104259148824240844594', '2017-03-20 16:31:49', '2017-03-20 16:31:51'),
-(11, 'google', '117385395409440279158', 'AJAY', 'YADAV', 'mynitdata@gmail.com', '', 'en-GB', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', '', '2017-03-21 10:39:29', '2017-03-22 17:29:26');
+(11, 'google', '117385395409440279158', 'AJAY', 'YADAV', 'mynitdata@gmail.com', '', 'en-GB', 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg', '', '2017-03-21 10:39:29', '2017-03-24 12:16:36'),
+(12, 'google', '104259148824240844594', 'Amit', 'kumar', 'amitamora@gmail.com', '', 'en', 'https://lh5.googleusercontent.com/-vm_66c6hPcw/AAAAAAAAAAI/AAAAAAAAAq0/lt4f-O8Uhf4/photo.jpg', '', '2017-03-23 14:49:12', '2017-03-23 14:49:43'),
+(13, 'google', '105556985570123126529', 'abhay', 'pratap singh', 'abhaypratapsingh185@gmail.com', '', 'en', 'https://lh6.googleusercontent.com/-B0Ofrp0o7_w/AAAAAAAAAAI/AAAAAAAAABM/ESoL8PL7zHY/photo.jpg', '', '2017-03-24 12:13:53', '2017-03-24 12:13:54');
 
 --
 -- Indexes for dumped tables
@@ -318,6 +341,12 @@ INSERT INTO `users` (`id`, `oauth_provider`, `oauth_uid`, `first_name`, `last_na
 -- Indexes for table `allotment`
 --
 ALTER TABLE `allotment`
+  ADD PRIMARY KEY (`rollno`);
+
+--
+-- Indexes for table `allotment_date`
+--
+ALTER TABLE `allotment_date`
   ADD PRIMARY KEY (`round_number`);
 
 --
@@ -362,7 +391,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
