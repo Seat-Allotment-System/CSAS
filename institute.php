@@ -38,12 +38,7 @@ class institute
         $sql = "select * from institute where name = '$institutename'";
         $result = mysqli_query($this->connect,$sql);
             
-           /* while($row = mysqli_fetch_assoc($result) )
-            {
-                echo "Institute name : ".$row['name']."  total seats : ".$row['totalseat']."<br/>";
-            } */
             $row = mysqli_fetch_assoc($result);
-            print_r($row);
             if($row['vacant_seat']>0)
               return true;
             else
@@ -63,8 +58,6 @@ class institute
     {
       $sql = "update institute set vacant_seat=vacant_seat-1 where name = '$institute'";
       $r = mysqli_query($this->connect,$sql);
-      //if($r)
-        //echo "updated seat";
     }
 
 public function addVacantSeat($institute)

@@ -142,7 +142,7 @@ if(!strcmp($methodname,"fill choice"))
 <select name="firstchoice"  align="center" style="height:30px;width:200px;" required>
 <?php 
 //$result = $stu->getStudentDetails($rollno);
-        ?> <option selected value> ------ select an Institute ------ value=""</option> <?php
+        ?> <option selected value=""> ------ select an Institute ------</option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -156,7 +156,7 @@ while($row = mysqli_fetch_assoc($result))
 <?php 
 
 $result = $insobj-> getAllInstitute(); 
-        ?> <option selected value>------ select an Institute ------ value=""</option> <?php
+        ?> <option selected value="">------ select an Institute ------ </option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -169,7 +169,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
-    ?> <option selected value>------ select an Institute ------  value="" </option> <?php
+    ?> <option selected value="">------ select an Institute ------  </option> <?php
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -182,7 +182,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
- ?> <option selected value>------ select an Institute ------  value="" </option> <?php   
+ ?> <option selected value="">------ select an Institute ------ </option> <?php   
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -195,7 +195,7 @@ while($row = mysqli_fetch_assoc($result))
 
 <?php 
 $result = $insobj-> getAllInstitute(); 
- ?> <option selected value>------ select an Institute ------ value="" </option> <?php   
+ ?> <option selected value="">------ select an Institute ------ </option> <?php   
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -244,7 +244,7 @@ if(!strcmp($methodname,"edit choice"))
     
         if(strcmp("",$row['firstchoice']) == 0)
         {
-    ?> <option selected value>------ select an Institute ------  value=""</option> <?php
+    ?> <option selected value="">------ select an Institute ------</option> <?php
         }
         else
         {
@@ -264,7 +264,7 @@ if(!strcmp($methodname,"edit choice"))
 <?php 
        if(strcmp("",$row['secondchoice']) == 0)
         {
-    ?> <option selected value>------ select an Institute ------ value=""</option> <?php
+    ?> <option selected value="">------ select an Institute ------ </option> <?php
         }
         else
         {
@@ -285,7 +285,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php 
        if(strcmp("",$row['thirdchoice']) == 0)
         {
-    ?> <option selected value>------ select an Institute ------ value=""</option> <?php
+    ?> <option selected value="">------ select an Institute ------ </option> <?php
         }
         else
         {
@@ -306,7 +306,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php  
       if(strcmp("",$row['fourthchoice']) == 0)
         {
-    ?> <option selected value> ------ select an Institute ------  value=""</option> <?php
+    ?> <option selected value=""> ------ select an Institute ------ </option> <?php
         }
         else
         {
@@ -327,7 +327,7 @@ while($row1 = mysqli_fetch_assoc($result))
 <?php 
       if(strcmp("",$row['fifthchoice']) == 0)
         {
-    ?> <option selected value>------ select an Institute ------  value="" </option> <?php
+    ?> <option selected value="">------ select an Institute ------ </option> <?php
         }
         else
         {
@@ -392,10 +392,21 @@ while($row1 = mysqli_fetch_assoc($result))
     
    <div id="templatemo_footer" align="center">
 
-
-	<img src="images/3.gif" style="width:80%;height:80%"/>
-<br>
-	
+<table>
+						<tr>
+							<td><img src = "images/au.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/sa.svg" height = "50px" width = "70px"></td>
+							<td><img src = "images/west.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/lk.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/6.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/rusia.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/afg.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/bhu.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ger.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ban.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/mal.png" height = "50px" width = "70px"></td>
+						</tr>
+					</table>
 </div> <!-- end of templatemo_footer -->
 <div align="center">Copyright by<strong> NIT CALICUT</strong>  @2017</div>
 

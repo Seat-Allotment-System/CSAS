@@ -18,7 +18,7 @@ $email = $_SESSION['email'];
 $now = new DateTime();
 $date = $now->format('Y-m-d');
 
-$lastdate ="2017-03-23";
+$lastdate ="2017-03-24";
 $allotmentresult = "2017-03-22";
 
 /* Object Decleration */
@@ -62,6 +62,7 @@ $row = mysqli_fetch_assoc($result);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CSAS</title>
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+
 
 <link href="css/jquery.ennui.contentslider.css" rel="stylesheet" type="text/css" media="screen,projection" />
 
@@ -203,7 +204,7 @@ else
 //button for see allotment result , filled choice pdf , logout
      ?>
 <br><a href="./choicepdf.php" target="_blank">
-      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Filled Choice Pdf</button>
+      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Print choice filling </button>
         </a>
        
 <?php
@@ -227,7 +228,7 @@ else
 
             ?>
 <br><br><a href="https://csasallotment.000webhostapp.com/update/csas/choicepdf.php" target="_blank">
-      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Filled Choice Pdf</button>
+      <button type="submit" name="submit" value="Result Pdf" style="width:300px;height:30px;text-decoration:none;">Print choice filling </button>
         </a> 
 <?php
           if(strtotime($date) > strtotime($allotmentresult))

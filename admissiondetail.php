@@ -21,7 +21,7 @@
     <div id="site_title">
     <h1><a href="#" target="_parent">
     <strong>CSAS</strong>
-    <span>Central Seat Allotment</span>
+    <span>Central Seat Allotment System</span>
     </a></h1>
     </div>
       <div class="twitter">
@@ -35,7 +35,43 @@
         <li><a href="logs.php">Logout</a></li>
         <li><a href="do_allot.php">First Allotment</a></li>
         <li><a href="allot_round.php">Second Allotment</a></li>
-        <li><a href="#">Final Allotment</a></li>
+        <li><a href="final_allot.php">Final Allotment</a></li>
+       <!-- <?php   
+                include('allotment_class.php');
+                $allot_obj=new allotment();
+                $now = new DateTime();
+                $current = $now->format('Y-m-d');
+                $round_date = $allot_obj->getdate(1);
+
+                if($round_date)
+                {
+                    if(strtotime($current)==strtotime($round_date))
+                    {
+                       echo "";
+                    }
+                }  
+                $cur1 = $now->format('Y-m-d');
+                $round_date1 = $allot_obj->getdate(2);
+
+                if($round_date1)
+                {
+                    if(strtotime($cur1)==strtotime($round_date1))
+                    {
+                       echo "";
+                    }
+                }
+
+                $current3 = $now->format('Y-m-d');
+                $round_date3 = $allot_obj->getdate(3);
+                if($round_date3)
+                {
+                    if(strtotime($current3)==strtotime($round_date3))
+                    {
+                       echo "";
+                    }
+                }
+
+            ?>-->
     </ul>
 </div> 
 <!-- end of templatemo_menu -->
@@ -186,7 +222,8 @@ margin-top:10px;
         $result=$stud_obj->getAdmissionStudentDetails($roll);
         
         while($rowdata=mysqli_fetch_assoc($result))
-        {          
+        { 
+                   
             if($rowdata['rollno'])
             {
 //if rollno exists then shows all student details 
@@ -211,14 +248,18 @@ margin-top:10px;
 </br>
         <form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> style="text-align:center;">
 
-
+<?php 
+if(!strcmp($rowdata['admission_status'],""))
+{
+?>
          <button type ="submit" name="submit" value="upgrade" style="margin-left:0px;font-size:20px; width:200px;" >Upgrade</button><br><br>
        
                      <button type ="submit" name="submit" value="confirm" style="margin-left:0px;font-size:20px; width:200px;">Confirm</button>
 
-
-
-       
+<?php
+}
+?>
+    
 </form>
 
 <br><center>
@@ -238,7 +279,6 @@ margin-top:10px;
 }
 
 // if admin click on upgrade or confirms button then this line of code execute 
-
     if(isset($_POST['submit']))
     {
 

@@ -34,22 +34,22 @@
 					$result=mysqli_query($this->conn,$sql);
 					if($result)
 					{
-						echo "updated seat status";
+						//echo "updated seat status";
 					}
 					else
 					{
-						echo "can't update seat status";
+						//echo "can't update seat status";
 					} 
 
 				}
 				else
 				{
-					echo "No such student with the given roll";
+					//echo "No such student with the given roll";
 				}
 			}
 			else
 			{
-				echo "Sql query not running";
+				//echo "Sql query not running";
 			}
 		}
 
@@ -58,8 +58,6 @@
 		{
 			$sql = "insert into seat values('$institute','$roll')";
 			$res = mysqli_query($this->conn,$sql);
-			if($res)
-				echo "seat alloted";
 		}
 
 		public function delete_seat($roll)
@@ -68,7 +66,6 @@
 			$res = mysqli_query($this->conn,$sql);
 			$row = mysqli_fetch_assoc($res);
 			$inst = $row["institute_name"];
-			//echo $inst;
 			$sql = "delete from seat where student_rollno ='$roll'";
 			$res = mysqli_query($this->conn,$sql);
 			return $inst;
@@ -77,6 +74,4 @@
 
 	}
 
-	/*$sobj=new seat();
-	$sobj->getSeatStatus(100);*/
 ?>

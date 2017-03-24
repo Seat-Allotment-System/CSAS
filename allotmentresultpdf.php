@@ -1,5 +1,6 @@
 <?php
 include('fpdf.php');
+// include('choicefilling_class.php');
 session_start();
 
 
@@ -9,6 +10,9 @@ session_start();
        $email = $_SESSION['email'];
        $allotment_status = $_SESSION['allotment_status'];
        $institiute_name = $_SESSION['institiute_name'];
+
+
+
 
 $pdfobj = new FPDF();
 $pdfobj->AddPage();

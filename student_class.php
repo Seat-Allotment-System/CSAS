@@ -70,7 +70,18 @@ class student
     $sql = "update student set allotment_status='$allot' where rollno='$roll'";
     $r=mysqli_query($this->connect,$sql);
   }
+public function setNULL_second_round($roll)
+{
+     $allot="alloted";
+    $sql = "update student set admission_status=NULL where rollno='$roll'";
+    $r=mysqli_query($this->connect,$sql);
+}
 
+  public function update_third_round_admission_status($roll)
+  {
+    $sql="update student set admission_status='confirm' where rollno='$roll'";
+    $res=mysqli_query($this->connect,$sql);
+  }
 public function rejectStudent($roll)
   {
     $sql="update student set choice_status=NULL,allotment_status='rejected' where rollno='$roll'";
@@ -105,7 +116,7 @@ public function updateAdmissionStatus($roll,$method)
               $sql = "update student set admission_status = '$upgrade' where rollno = '$roll' and allotment_status='alloted'";
               $result = mysqli_query($this->connect,$sql);
      
-               echo " <script> alert('Your first round addmission status has upgraded....!!!');
+               echo " <script> alert('Your addmission status has upgraded....!!!');
                 window.location = ('admissiondetail.php');</script>";
           
               }
@@ -117,96 +128,14 @@ public function updateAdmissionStatus($roll,$method)
               window.location = ('admissiondetail.php');</script>";
             
           }
-        }
-        else if(!strcmp($admission,$upgrade))
-        {
-            $sql2 = "select * from allotment where rollno ='$roll'";
-            $result2 = mysqli_query($this->connect,$sql2);
-            $rowdata1=mysqli_fetch_assoc($result2);
-            $date=$rowdata1['start_date'];
-            $round=$rowdata1['round_number'];
-            $current=date("Y-m-d");  
-             if($date==$current && $round==1)
-             {
-                echo " <script> alert(' Your status have been updated on this day ....!!!');
-                window.location = ('admissiondetail.php');</script>";
-              }
-             else
-             {
-                 $date1='2017-03-22';
-                 $current=date("Y-m-d");
-
-                 if($date1==$current && $round==1)
-                 {
-                    if(!strcmp($admission,$upgrade))
-                     {
-
-                         if(!strcmp($admission,$method))
-                          {
-                           
-                           $round_number=2;
-                           $sql2 = "update allotment set round_number='$round_number' where rollno='$roll'";
-                           $result2 = mysqli_query($this->connect,$sql2);
-                           echo " <script> alert(' Your second round status has upgrded....!!!');
-                           window.location = ('admissiondetail.php');</script>";
-          
-                          }
-                          else
-                          {
-                             $sql = "update student set admission_status = '$method' where rollno = '$roll'";
-                             $result = mysqli_query($this->connect,$sql);
-     
-                             echo " <script> alert(' Your admission status has finally confirm.....!!');
-                             window.location = ('admissiondetail.php');</script>";
-
-                         }
-
-                      }
-                      else 
-                      {
- 
-                       echo " <script> alert(' Your admission status already has been confirm....!!!');
-                       window.location = ('admissiondetail.php');</script>";
-
-
-                       }
-                 }
-                 else if(($date1==$current && $round==2))
-                 {
-                       echo " <script> alert(' Your admission have been updated on this day....!!!');
-                       window.location = ('admissiondetail.php');</script>";
-                 }
-                 else 
-                 {
-                         $sql4 = "update student set admission_status = '$confirm' where rollno = '$roll'";
-                         $result = mysqli_query($this->connect,$sql4);
-                         echo " <script> alert(' Your Final round admission status has confirm.....!!');
-                         window.location = ('admissiondetail.php');</script>";
-                 }
-                
-             
-            }
-
        }
-       else if(!strcmp($admission,$confirm))
-       {
-               $sql3 = "update student set admission_status = '$method' where rollno = '$roll'";
-               $result = mysqli_query($this->connect,$sql3);
-               echo " <script> alert(' Your admission status has finally confirm.....!!');
-               window.location = ('admissiondetail.php');</script>";
-       }
-       else
-       {
-           echo " <script> alert(' Your admission status have been already confirm.....!!');
-           window.location = ('admissiondetail.php');</script>";
-       }
-   }
+    }    
 }
 
 public function getAdmissionStudentDetails($rollno)
     {
 
-     
+     $reject="rejected";
        $sql = "select * from student where rollno ='$rollno'";
       $result = mysqli_query($this->connect,$sql);
    
@@ -219,6 +148,11 @@ public function getAdmissionStudentDetails($rollno)
          echo " <script> alert(' You have no seat Alloted.......!!!!!');
                 window.location = ('admissiondetail.php');</script>";
       }
+      if(!strcmp($alloted,$reject))
+      {
+        echo " <script> alert('Your Seat have been Rejected.......!!!!!');
+                window.location = ('admissiondetail.php');</script>";
+     }
       else
       {
          $sql = "select * from student where rollno ='$rollno' and allotment_status='alloted'";

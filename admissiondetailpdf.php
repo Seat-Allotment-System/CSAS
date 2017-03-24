@@ -34,12 +34,11 @@ $pdfobj->Cell(0,10,"Based on choice filled by the following candidate and his/he
 $pdfobj->Cell(0,10,"a seat in MCA programme is provisionally alloted. The allotted institute details along with personal ",0,1,'C');
 $pdfobj->Cell(0,10,"details , along with personal details,registered by the candidate are mentioned below",0,1,'C');
 $pdfobj->Cell(0,10,"",0,1,'C');
-
 $pdfobj->Cell(0,10,"NAME                              $name",0,1,'C');
-$pdfobj->Cell(0,10,"Roll No                              $rollno ",0,1,'C');
+$pdfobj->Cell(0,10,"Roll No                           $rollno ",0,1,'C');
 $pdfobj->Cell(0,10,"Rank                              $rank ",0,1,'C');
-$pdfobj->Cell(0,10,"Institute Name                               $institutename",0,1,'C');
-$pdfobj->Cell(0,10,"Admission Status                               $admissionstatus",0,1,'C');
+$pdfobj->Cell(0,10,"Institute Name                    $institutename",0,1,'C');
+$pdfobj->Cell(0,10,"Admission Status                $admissionstatus",0,1,'C');
 
 $pdfobj->output();
 ?>

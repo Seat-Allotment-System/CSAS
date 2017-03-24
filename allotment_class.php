@@ -31,6 +31,15 @@
 			return $stud;
 
 		}
+//Added by fahad for allotment round date
+		public function getdate($round)
+		{
+			$sql="select * from allotment_date where round_number='$round' and allotment_held=false";
+			$res=mysqli_query($this->conn,$sql);
+			$row=mysqli_fetch_assoc($res);
+			$date=$row["start_date"];
+			return $date;
+		}
 
 	}
 

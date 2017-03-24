@@ -174,7 +174,7 @@ if(strtotime($date) <= strtotime($lastdate))
         <tr><td>Roll no</td><td><?php echo $row['rollno']; ?></td></tr>
         <tr><td>Rank</td><td><?php echo $row['rank']; ?></td></tr>
         <tr><td>Email</td><td><?php echo $row['email']; ?></td></tr>
-        <tr><td>Allotment Status check</td><td><?php 
+        <tr><td>Allotment Status</td><td><?php 
         if(!$row['allotment_status'])
         echo "Not Alloted";
         else
@@ -234,8 +234,21 @@ if(strtotime($date) <= strtotime($lastdate))
    <div id="templatemo_footer" align="center">
 
 
-	<img src="images/3.gif" style="width:80%;height:80%"/>
-<br>
+	<table>
+						<tr>
+							<td><img src = "images/au.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/sa.svg" height = "50px" width = "70px"></td>
+							<td><img src = "images/west.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/lk.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/6.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/rusia.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/afg.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/bhu.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ger.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ban.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/mal.png" height = "50px" width = "70px"></td>
+						</tr>
+					</table>
 	
 </div> <!-- end of templatemo_footer -->
 <div align="center">Copyright by<strong> NIT CALICUT</strong>  @2017</div>

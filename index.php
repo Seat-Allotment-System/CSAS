@@ -149,7 +149,7 @@ h1{font-family:Arial, Helvetica, sans-serif;color:#999999;}
 		<div id="templatemo_menu">
 
 			<ul>
-				
+				<li><a href="adminlogins.php">Admin Panel</a></li>
 				<li><a href="index.php" 
 					class="current first" >Home</a></li>
 				<li><a href="participating_nits.php" 
