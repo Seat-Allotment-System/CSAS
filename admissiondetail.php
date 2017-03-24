@@ -29,7 +29,14 @@
       </div>
  <!-- end of templatemo_header -->
 <div id="templatemo_menu">
-
+    <ul>
+        <li><a href="admissiondetail.php" 
+                    class="current first" >Admin Panel</a></li>
+        <li><a href="logs.php">Logout</a></li>
+        <li><a href="do_allot.php">First Allotment</a></li>
+        <li><a href="allot_round.php">Second Allotment</a></li>
+        <li><a href="#">Final Allotment</a></li>
+    </ul>
 </div> 
 <!-- end of templatemo_menu -->
     
@@ -122,7 +129,7 @@ margin-top:10px;
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" style="font-size:30px;padding:auto;"> 
 
             <input type="text" name="rollno"
-            placeholder="Enter Student Roll no" style="margin-left:0px;font-size:20px;">&nbsp;&nbsp;&nbsp;
+            placeholder="Enter Student Roll no" style="margin-left:0px;font-size:20px;" required="required">&nbsp;&nbsp;&nbsp;
             <input type="submit" name="sub" value="Student Detail" style="margin-left:50px;font-size:20px"> 
            
         </form> 
@@ -146,24 +153,36 @@ margin-top:10px;
 
         $roll=$_POST['rollno'];
 
+//creating classes objects
+         $stud_obj=new student();
+         $seatstu_obj= new seat();
+
 // creating session
 
         session_start();
         $_SESSION['rollno']=$roll;
+    
+         $result = $stud_obj->getStudentCheck($roll);   
 
-//creating classes objects
-
-        $stud_obj=new student();
-        $seatstu_obj= new seat();
+         if($result==false)
+         {
+             echo " <script> alert(' Your roll number not exist.......!!!!!');
+                window.location = ('admissiondetail.php');</script>";
+         }
+         else
+         {
+             
 
 //calling seat class function for accessing student seat details 
 
         $seatdataresult1= $seatstu_obj->getSeatStatus($roll);
-        $seatdataresult=mysqli_fetch_assoc($seatdataresult1);
-
+       while($seatdataresult=mysqli_fetch_assoc($seatdataresult1))
+       {
 // accessing student alloted institute by calling institute class function
 
         $institute_name = $seatdataresult['institute_name'];
+        }
+
         $result=$stud_obj->getAdmissionStudentDetails($roll);
         
         while($rowdata=mysqli_fetch_assoc($result))
@@ -175,16 +194,16 @@ margin-top:10px;
      <fieldset style="width:400px;margin-left:40px;">
             <table style="text-align:left;margin-left:100px;" width="450px" height="200px"  >
                 <tr style="font-size:20px">
-                <td> Roll No</td><td><?php echo $rowdata['name'];?></td>
+                <td> Name</td><td><?php echo $rowdata['name'];?></td>
                 </tr>
                 <tr style="font-size:20px">
-                <td>Name</td><td><?php echo $rowdata['rollno'];?> </td>
+                <td>Roll no</td><td><?php echo $rowdata['rollno'];?> </td>
                 </tr>
                 <tr style="font-size: 20px">
                 <td>Rank </td><td><?php echo $rowdata['rank'];?> </td>
                 </tr>
                 <tr style="font-size: 20px">
-                <td>Institute Name </td><td><?php echo $seatdataresult['institute_name'];?> </td>
+                <td>Alloted institute</td><td><?php echo $institute_name;?> </td>
                 </tr>
             </table>
 </fieldset>
@@ -216,6 +235,7 @@ margin-top:10px;
 
     }
 }
+}
 
 // if admin click on upgrade or confirms button then this line of code execute 
 
@@ -223,14 +243,14 @@ margin-top:10px;
     {
 
 // session start
-      session_start();
+        session_start();
 
 //accessing rollno of student by session
         $roll=$_SESSION['rollno'];
         $_SESSION['rollno'] = $roll;
 
 //creating student class object
-              $stu=new student();
+        $stu=new student();
         $method= $_POST['submit'];
 
 //updating student admission status 
@@ -277,8 +297,21 @@ margin-top:10px;
    <div id="templatemo_footer" align="center">
 
 
-    <img src="images/3.gif" style="width:80%;height:80%"/>
-<br>
+   <table>
+						<tr>
+							<td><img src = "images/au.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/sa.svg" height = "50px" width = "70px"></td>
+							<td><img src = "images/west.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/lk.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/6.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/rusia.jpg" height = "50px" width = "70px"></td>
+							<td><img src = "images/afg.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/bhu.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ger.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/ban.png" height = "50px" width = "70px"></td>
+							<td><img src = "images/mal.png" height = "50px" width = "70px"></td>
+						</tr>
+					</table>
     
 </div> <!-- end of templatemo_footer -->
 <div align="center">Copyright by<strong> NIT CALICUT</strong>  @2017</div>

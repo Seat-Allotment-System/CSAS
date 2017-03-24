@@ -5,20 +5,38 @@
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
+  padding: 3% 0 0;
   margin: auto;
 }
 body{
 
   background-image: url("life.jpg"); 
 }
+#Admin
+{
+  border-radius: 10px;
+  text-align: center;
+  background-color:#90992C;
+  height:100px;
+  padding-top:50px;
+  font-size:50px;
+  opacity: .7; 
+
+}
+
 .form {
+  
+  background-color:#90992C;
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  background: #90992C;
+  width: 400px;
+
+  margin-top:0px;
+  margin-left:0px;
+  margin-bottom: 90px;
+  margin-right:auto;
+  padding: 25px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -31,7 +49,9 @@ body{
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 18px;
+   border-radius: 8px;
+
 }
 .form button {
   font-family: "Roboto", sans-serif;
@@ -65,8 +85,9 @@ body{
 .container {
   position: relative;
   z-index: 1;
-  max-width: 300px;
+  max-width: 500px;
   margin: 0 auto;
+
 }
 .container:before, .container:after {
   content: "";
@@ -113,7 +134,7 @@ body {
 		<link href="css/jquery.ennui.contentslider.css" rel="stylesheet" type="text/css" media="screen,projection" />
 	
 </head>
-<body bgcolor="red">
+<body>
 <div id="templatemo_wrapper">
   
     <div id="templatemo_header">
@@ -121,23 +142,29 @@ body {
   <div id="site_title">
     <h1><a href="#" target="_parent">
     <strong>CSAS</strong>
-    <span>Central Seat Allotment</span>
+    <span>Central Seat Allotment System</span>
     </a></h1>
   </div>
   
   <div class="twitter">
-      <a href="http://www.nitc.ac.in/">Organizing Institute <br/><span>NIT CALICUT</span></a>
+      <a href="https://csasallotment.000webhostapp.com/update/csas/" style="font-weight:bold; font-size:30px;">Home Page<br/><span></span></a>
   </div>
   
 </div> <!-- end of templatemo_header -->
 <div id="templatemo_menu">
 
 </div> 
+</div>
+<div id= "Admin">
+  
+<h1 style="font-size:60px;">Admin Panel </h1>
+
+</div>
 <div class="login-page">
   <div class="form">
     <form class="login-form" method ="post" action="adminlogins.php">
-      <input type="text" name="name" placeholder="username"/>
-      <input type="password" name="password" placeholder="password"/>
+      <input type="text" name="name" placeholder="username" required="required"/>
+      <input type="password" name="pass" placeholder="password" required="required"/>
       <input type="submit" name="submit" value="Admin Login">
     </form>
 
@@ -164,7 +191,7 @@ if(isset($_POST['submit']))
 {
 
    $name=$_POST['name'];
-   $pass=$_POST['password'];
+   $pass=$_POST['pass'];
 
   $sql= "select * from admin where name ='$name' and password ='$pass'";
   
@@ -173,7 +200,8 @@ if(isset($_POST['submit']))
 
   if(mysqli_num_rows($res)>0)
   {
-
+    session_start();
+    $_SESSION["name"]=$name;
      echo " <script> alert(' You are Login Here......!!!!!');
                 window.location = ('admissiondetail.php');</script>";
 
