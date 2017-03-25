@@ -33,51 +33,38 @@
         <li><a href="admissiondetail.php" 
                     class="current first" >Admin Panel</a></li>
         <li><a href="logs.php">Logout</a></li>
-        <li><a href="do_allot.php">First Allotment</a></li>
+        <!--<li><a href="do_allot.php">First Allotment</a></li>
         <li><a href="allot_round.php">Second Allotment</a></li>
-        <li><a href="final_allot.php">Final Allotment</a></li>
-       <!-- <?php   
+        <li><a href="final_allot.php">Final Allotment</a></li>-->
+       <?php   
                 include('allotment_class.php');
                 $allot_obj=new allotment();
                 $now = new DateTime();
                 $current = $now->format('Y-m-d');
-                $round_date = $allot_obj->getdate(1);
+                $round = $allot_obj->getdate($current);
 
-                if($round_date)
+                if($round==1)
                 {
-                    if(strtotime($current)==strtotime($round_date))
-                    {
-                       echo "";
-                    }
+                    echo "<li><a href=\"do_allot.php\">First Allotment</a></li>";
                 }  
-                $cur1 = $now->format('Y-m-d');
-                $round_date1 = $allot_obj->getdate(2);
-
-                if($round_date1)
-                {
-                    if(strtotime($cur1)==strtotime($round_date1))
-                    {
-                       echo "";
-                    }
+                else if($round==2)
+                {    
+                    echo "<li><a href=\"allot_round.php\">Second Allotment</a></li>";
                 }
-
-                $current3 = $now->format('Y-m-d');
-                $round_date3 = $allot_obj->getdate(3);
-                if($round_date3)
+                else if($round==3)
                 {
-                    if(strtotime($current3)==strtotime($round_date3))
-                    {
-                       echo "";
-                    }
+                    echo "<li><a href=\"final_allot.php\">Final Allotment</a></li>";
                 }
-
-            ?>-->
+        ?>
     </ul>
 </div> 
 <!-- end of templatemo_menu -->
     
     <div id="templatemo_content_wrapper">
-    
+        <div class="cleaner"></div>
+                <div style="background:url(images/templatemo_slider.png); padding:5px;">
+<marquee behavior="alternate" style="color:#FF0000"><strong> Choice Filling will start from 10<sup> th</sup>March 2017. CSAC-2017 Host Institute is NIT CALICUT.</strong></marquee>
+                </div>
         <div id="templatemo_content">
         
             ﻿<html>
