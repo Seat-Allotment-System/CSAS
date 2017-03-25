@@ -9,7 +9,7 @@
     $now = new DateTime();
     $date = $now->format('y-m-d');
     //echo "<br>date : $date<br/>";
-    $lastdate = "2017-03-18";
+    $lastdate = "2017-03-24";
     
 
     if(strtotime($date) > strtotime($lastdate))

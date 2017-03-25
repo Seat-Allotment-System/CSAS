@@ -17,7 +17,7 @@
 
 // starting date of allotment
  
-    $lastdate = "2017-03-19";
+    $lastdate = "2017-03-25";
 
     if(strtotime($date) > strtotime($lastdate))
     {

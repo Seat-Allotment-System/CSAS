@@ -33,11 +33,11 @@
         <li><a href="admissiondetail.php" 
                     class="current first" >Admin Panel</a></li>
         <li><a href="logs.php">Logout</a></li>
-        <!--<li><a href="do_allot.php">First Allotment</a></li>
+        <li><a href="do_allot.php">First Allotment</a></li>
         <li><a href="allot_round.php">Second Allotment</a></li>
-        <li><a href="final_allot.php">Final Allotment</a></li>-->
-       <?php   
-                include('allotment_class.php');
+        <li><a href="final_allot.php">Final Allotment</a></li>
+      <!--<?php   
+                /*include('allotment_class.php');
                 $allot_obj=new allotment();
                 $now = new DateTime();
                 $current = $now->format('Y-m-d');
@@ -54,8 +54,8 @@
                 else if($round==3)
                 {
                     echo "<li><a href=\"final_allot.php\">Final Allotment</a></li>";
-                }
-        ?>
+                }*/
+        ?>-->
     </ul>
 </div> 
 <!-- end of templatemo_menu -->
