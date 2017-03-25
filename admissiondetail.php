@@ -63,7 +63,7 @@
     <div id="templatemo_content_wrapper">
         <div class="cleaner"></div>
                 <div style="background:url(images/templatemo_slider.png); padding:5px;">
-<marquee behavior="alternate" style="color:#FF0000"><strong> Choice Filling will start from 10<sup> th</sup>March 2017. CSAC-2017 Host Institute is NIT CALICUT.</strong></marquee>
+<marquee behavior="alternate" style="color:#FF0000"><strong> Please See Important Dates for allotment of rounds and remorte reporting.</strong></marquee>
                 </div>
         <div id="templatemo_content">
         
