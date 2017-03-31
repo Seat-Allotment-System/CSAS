@@ -1,14 +1,30 @@
 <?php
 
 //including classes
+/*! \file student_class.php 
+\brief to access for all Student class  function 
+*/
 include('student_class.php');
+/*! \file choicefilling_class.php 
+\brief to access for all choice filling class  function 
+*/
 include ('choicefilling_class.php');
+/*! \file connection.php 
+\brief to create connection with database 
+*/
 include('connection.php');
+/*! \file seat_class.php 
+\brief to access for all seat class  function 
+*/
 include('seat_class.php');
 
 /* Session Start */
- 
+
+ /*! \fn session_start() */
 session_start();
+/*! \var $redirect 
+\brief for stroing choice accessing from session 
+*/
 $redirect = $_SESSION['choice'];
 
 
@@ -23,26 +39,53 @@ if ($_SESSION['email'])
 }
 
 //accesing student rollno
+/*! \var $rollno 
+\brief for stroing rollno accessing from session 
+*/
 $rollno=$_SESSION['rollno'];
 	
 
 /* Current Time */
+/*! \class A class DataTime obj creation 
+*/
 $now = new DateTime();
+/*! \fn format('Y-m-d')
+\param y for year
+\param m for month
+\param for days
+\brief class DataTime calling format function for current year , month , day 
+*/
 $date = $now->format('Y-m-d');
-
+/*! \var lastdate 
+\brief for stroing last date
+*/ 
 $lastdate ="2017-03-18";
 
 /* Object Decleration */
-
+/*! A class stduent object
+*/
 $stu = new student();
+/*! A class choice object
+*/
 $obj = new choice();
+/*! class seat object*/
 $seat= new seat();
 
 // Function Calling  for student details 
+/*! A class student object calling
+       \fn getStudentDetails($rollno)
+       \param $rollno for storing rollno 
+       \brief for getting student details on given rollno
+       */
 $result = $stu->getStudentDetails($rollno);
 $row = mysqli_fetch_assoc($result);
 
 //accessing student seat status 
+/*! A class seat object calling
+       \fn getSeatStatus($rollno)
+       \param $rollno for storing rollno
+       \brief for getting student seat status
+       */
 $alloted = $seat->getSeatStatus($rollno);
 $allotresult = mysqli_fetch_assoc($alloted);
 //echo "alloted indtitute : ".$allotresult['institute_name'];
@@ -165,6 +208,16 @@ if(strtotime($date) <= strtotime($lastdate))
                           <?php 
 
 //check for current date and last date for allotment result
+        /**! \fn strtotime($date)
+        \param date 
+        \brief for storing date 
+        */
+        
+        /**! \fn strtotime($lastdate)
+        \param lastdate
+        \brief for storing last of allotment result date 
+        */
+        
    if(strtotime($date) >= strtotime($lastdate))
    {
 //printing student details 

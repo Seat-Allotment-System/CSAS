@@ -1,28 +1,38 @@
 <?php
-
+/*! \file student_class.php */
 include('student_class.php');
+/*! \file choicefilling_class.php */
 include ('choicefilling_class.php');
+/*! \file connection.php */
 include('connection.php');
 
 /*Session Start */
+/*! \fn session_start() */
  session_start();
+/*! \var $_SESSION['choice'] for stroing REQUEST_URI accessing from session */ 
 $_SESSION['choice']=$_SERVER['REQUEST_URI'];
 //echo $_SESSION['choice'];
+/*! \var redirecthome for stroing for redirect*/ 
 $redirecthome="http://localhost/CSAS/";
 
-
+/*! \var $email for stroing $email accessing from session */ 
 $email = $_SESSION['email'];
 //echo $email; 
 
 /* Curent Time */
+/*! class DataTime obj creation */
 $now = new DateTime();
+/*! class DataTime calling format function for current year , month , day */
 $date = $now->format('Y-m-d');
-
-$lastdate ="2017-03-24";
+/*! \var $lastdate for stroing last date*/ 
+$lastdate ="2017-03-30";
+/*! \var $allotmentresult for stroing allotment result date*/
 $allotmentresult = "2017-03-22";
 
 /* Object Decleration */
+/*! class stduent object*/
 $stu = new student();
+/*! class choice object*/
 $obj = new choice();
 
 //accessing student details on his email id 
@@ -31,17 +41,35 @@ $result2 = mysqli_query($conn,$sql2);
 $row2 = mysqli_fetch_assoc($result2);
 
 //fetching student data 
+/*! \var rollno 
+\brief for stroing $rollno accessing from database 
+*/ 
 $rollno=$row2['rollno'];
+/*! \var stuemail 
+\brief for stroing $stuemail accessing from database 
+*/ 
 $stuemail = $row2['email'];
+/*! \var $_SESSION['rollno'] 
+\brief session var for stroing rollno for transfer rollno to next page 
+*/ 
 $_SESSION['rollno']=$rollno;
 //echo $rollno;
 
 //fetching student choice status
+ /*! \fn getchoicestatus($rollno)
+       \param rollno 
+       \brief for getting studet choice satus
+       */
 $result = $stu->getchoicestatus($rollno);
 $row = mysqli_fetch_assoc($result);
 //echo "choice status : ".$row['choice_status'];
 
 //printing choices filled by student
+/*! A class choice object calling
+       \fn printChoiceFillingdata($rollno)
+       \param rollno 
+       \brief for getting studet choice filled data
+       */
  $choicefill = $obj->printChoiceFillingdata($rollno);
             $choicefill = mysqli_fetch_assoc($choicefill);
            $_SESSION['firstchoice'] = $choicefill['firstchoice'];
@@ -166,7 +194,17 @@ if(strtotime($date) <= strtotime($lastdate))
         if(!strcmp($email,$stuemail))
         {
 
-//check for choice filling date             
+//check for choice filling date 
+            /*! \class  class DateTime 
+       \fn strtotime($date)
+       \param date
+       \brief for storing date 
+       */
+    /*! \class  class DateTime 
+       \fn strtotime($lastdate)
+       \param lastdate
+       \brief for storing last date 
+       */
    if(strtotime($date) <= strtotime($lastdate))
    {
 
@@ -185,6 +223,17 @@ if(strtotime($date) <= strtotime($lastdate))
        
  </form>
 <?php
+     /*! \class  class DateTime 
+       \fn strtotime($date)
+       \param date
+       \brief for storing date 
+       */
+    /*! \class  class DateTime 
+       \fn strtotime($allotmentresult)
+       \param allotmentresult
+       \brief for storing allotment result date 
+       */
+    
           if(strtotime($date) > strtotime($allotmentresult))
    {
 ?>
@@ -198,7 +247,11 @@ else
 {
 //if your choice filling date is over as according to important dates then u can only see your choices
     echo "<br><h6>you can only see your choices : <h6><br>";
-               
+          /*! \fn printChoiceFilling($rollno)
+       \param $rollno
+       \brief for printing all filledchoices
+       */     
+    
               $obj->printChoiceFilling($rollno);
 
 //button for see allotment result , filled choice pdf , logout
@@ -208,6 +261,16 @@ else
         </a>
        
 <?php
+    /*! \class class DateTimee 
+       \fn strtotime($date)
+       \param date 
+       \brief for storing date 
+       */
+    /*! \class class DateTimee 
+       \fn strtotime($allotmentresult)
+       \param allotmentresult 
+       \brief for storing allotment result date 
+       */
           if(strtotime($date) > strtotime($allotmentresult))
    {
 ?>
@@ -223,6 +286,11 @@ else
 //choice filling is closed 
             echo "<h6>choice filling closed as per given into important dates </h6>";
             echo "<br><h6>you can only see your choices : <h6><br>";
+            /*! \class class choice 
+       \fn printChoiceFilling($rollno)
+       \param $rollno
+       \brief for printing all filledchoices
+       */  
              $obj->printChoiceFilling($rollno);
 //button for see allotment result , filled choice pdf , logout
 

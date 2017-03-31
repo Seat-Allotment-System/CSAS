@@ -1,7 +1,15 @@
 <?php
-
+/*! \file institute.php
+\brief to access all institute details 
+*/
 include('institute.php');
+/*! \file student_class.php 
+\brief to access all studnet class details 
+*/
 include('student_class.php');
+/*! \file connection.php 
+\brief to access all connection details
+*/
 include('connection.php');
 
 /* Session Start */
@@ -9,14 +17,31 @@ include('connection.php');
     session_start();
     $methodname = $_POST['submit'];
     //echo $methodname;
-    $submit = "submit";
+    /*! <var submit 
+    \brief for storing string submit 
+    */
+    $submit = "submit"; 
+    /*! <var roll no 
+    \brief for storing roll no from session 
+    */
     $rollno = $_SESSION['rollno'];
-    $choiceredirect = $_SESSION['choice'];
-    $_SESSION['rollno'] = $rollno;
-    $_SESSION['choiceredirect']=$choiceredirect;
+    /*! <var choiceredirect 
+    \brief for storing address of choice page for redirect on that page 
+    */
+    $choiceredirect = $_SESSION['choice']; 
+    /*! <var session 
+    \brief for  transfer roll no to next page 
+    */
+    $_SESSION['rollno'] = $rollno; 
+    /*! <var session 
+    \brief for  transfer choiceredirect to next page 
+    */
+    $_SESSION['choiceredirect']=$choiceredirect; 
 //    echo "rollno  :  ".$rollno;
   
- $stuobj = new student();
+/*! A student class object 
+\brief calling function getchoicestatus for accssing student status 
+*/
 $choicestatuss = $stuobj->getchoicestatus($rollno);
     $choicestatus = mysqli_fetch_assoc($choicestatuss);
 //    echo " <br/>choice status ".$choicestatus['choice_status']."<br/>"; 
@@ -130,6 +155,11 @@ a:link
 
 <form method="post" action ="newchoicefunction.php">
 <?php
+    /*! \fn strcmp($methodname,"fill choice")
+    \param methodname
+    \param "fill choice"
+    \brief to compare two string
+    */
 if(!strcmp($methodname,"fill choice"))
 {
      if(!$choicestatus['choice_status'] == 'submit')
@@ -143,6 +173,7 @@ if(!strcmp($methodname,"fill choice"))
 <?php 
 //$result = $stu->getStudentDetails($rollno);
         ?> <option selected value=""> ------ select an Institute ------</option> <?php
+        /*! while loop to fetch all data from array */
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -154,9 +185,10 @@ while($row = mysqli_fetch_assoc($result))
 <select name="secondchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
-
+/*! A instutute class object for fetching all institute */
 $result = $insobj-> getAllInstitute(); 
         ?> <option selected value="">------ select an Institute ------ </option> <?php
+        /*! while loop to fetch all data from array */
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -168,8 +200,10 @@ while($row = mysqli_fetch_assoc($result))
 <select name="thirdchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+/*! A instutute class object for fetching all institute */
 $result = $insobj-> getAllInstitute(); 
     ?> <option selected value="">------ select an Institute ------  </option> <?php
+        /*! while loop to fetch all data from array */
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -181,8 +215,10 @@ while($row = mysqli_fetch_assoc($result))
 <select name="fourthchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+        /*! A instutute class object for fetching all institute */
 $result = $insobj-> getAllInstitute(); 
- ?> <option selected value="">------ select an Institute ------ </option> <?php   
+ ?> <option selected value="">------ select an Institute ------ </option> <?php
+        /*! while loop to fetch all data from array */
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -194,8 +230,11 @@ while($row = mysqli_fetch_assoc($result))
 <select name="fifthchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+        
+        /*! A instutute class object for fetching all institute */
 $result = $insobj-> getAllInstitute(); 
- ?> <option selected value="">------ select an Institute ------ </option> <?php   
+ ?> <option selected value="">------ select an Institute ------ </option> <?php 
+        /*! while loop to fetch all data from array */
 while($row = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -221,6 +260,11 @@ while($row = mysqli_fetch_assoc($result))
     ?>
     <br>
  <?php
+         /*! \fn strcmp($methodname,"fill choice")
+    \param methodname
+    \param "edit choice"
+    \brief to compare two string
+    */
 if(!strcmp($methodname,"edit choice"))
 {
     ?>
@@ -241,7 +285,11 @@ if(!strcmp($methodname,"edit choice"))
 <select name="firstchoice" align="center" style="height:30px;width:200px;">
 <?php 
 //$result = $stu->getStudentDetails($rollno);
-    
+    /*! \fn strcmp("",$row['firstchoice'])
+    \param ""
+    \param $row['firstchoice']
+    \brief to compare two string
+    */
         if(strcmp("",$row['firstchoice']) == 0)
         {
     ?> <option selected value="">------ select an Institute ------</option> <?php
@@ -250,7 +298,9 @@ if(!strcmp($methodname,"edit choice"))
         {
        ?> <option> <?php echo $row['firstchoice']; ?></option> <?php
         }
+        /*! A instutute class object for fetching all institute */
     $result = $insobj-> getAllInstitute();
+        /*! while loop to fetch all data from array */
     while($row1 = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -262,6 +312,12 @@ if(!strcmp($methodname,"edit choice"))
 <select name="secondchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+        /*! \fn strcmp("",$row['secondchoice'])
+    \param ""
+    \param $row['secondchoice']
+    \brief to compare two string
+    */
+    
        if(strcmp("",$row['secondchoice']) == 0)
         {
     ?> <option selected value="">------ select an Institute ------ </option> <?php
@@ -270,6 +326,9 @@ if(!strcmp($methodname,"edit choice"))
         {
        ?> <option> <?php echo $row['secondchoice']; ?></option> <?php
         }
+        /*! \fn getAllInstitute() 
+        \brief A instutute class object for fetching all institute 
+        */
 $result = $insobj-> getAllInstitute(); 
 
 while($row1 = mysqli_fetch_assoc($result))
@@ -283,6 +342,12 @@ while($row1 = mysqli_fetch_assoc($result))
 <select name="thirdchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+         /*! \fn strcmp("",$row['thirdchoice'])
+    \param ""
+    \param $row['thirdchoice']
+    \brief to compare two string
+    */
+    
        if(strcmp("",$row['thirdchoice']) == 0)
         {
     ?> <option selected value="">------ select an Institute ------ </option> <?php
@@ -291,8 +356,11 @@ while($row1 = mysqli_fetch_assoc($result))
         {
        ?> <option> <?php echo $row['thirdchoice']; ?></option> <?php
         }
+        /*! \fn  getAllInstitute() 
+        \brief A instutute class object for fetching all institute 
+        */
 $result = $insobj-> getAllInstitute(); 
-    
+    /*! while loop to fetch all data from array */
 while($row1 = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -304,6 +372,12 @@ while($row1 = mysqli_fetch_assoc($result))
 <select name="fourthchoice" align="center" style="height:30px;width:200px;">
 
 <?php  
+        
+         /*! \fn strcmp("",$row['fourthchoice'])
+    \param ""
+    \param $row['fourthchoice']
+    \brief to compare two string
+    */
       if(strcmp("",$row['fourthchoice']) == 0)
         {
     ?> <option selected value=""> ------ select an Institute ------ </option> <?php
@@ -312,8 +386,13 @@ while($row1 = mysqli_fetch_assoc($result))
         {
        ?> <option> <?php echo $row['fourthchoice']; ?></option> <?php
         }
+        /*! \fn getAllInstitute()
+        \brief  A instutute class object for fetching all institute 
+        */
 $result = $insobj-> getAllInstitute(); 
-    
+    /*! while loop 
+    \brief to fetch all data from array 
+    */
 while($row1 = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
@@ -325,6 +404,11 @@ while($row1 = mysqli_fetch_assoc($result))
 <select name="fifthchoice" align="center" style="height:30px;width:200px;">
 
 <?php 
+         /*! \fn strcmp("",$row['fifthchoice'])
+    \param ""
+    \param $row['fifthchoice']
+    \brief to compare two string
+    */
       if(strcmp("",$row['fifthchoice']) == 0)
         {
     ?> <option selected value="">------ select an Institute ------ </option> <?php
@@ -333,8 +417,13 @@ while($row1 = mysqli_fetch_assoc($result))
         {
        ?> <option> <?php echo $row['fifthchoice']; ?></option> <?php
         }
+        /*! \fn getAllInstitute()
+        \brief  A instutute class object for fetching all institute 
+        */
 $result = $insobj-> getAllInstitute(); 
-    
+    /*! while loop 
+    \brief to fetch all data from array 
+    */
 while($row1 = mysqli_fetch_assoc($result))
    {
        ?> <option> <?php
